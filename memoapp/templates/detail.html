@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <br>
+    <h1>상세페이지입니다.</h1>
+    <h2>{{memo.title}}</h2>
+    <p>{{memo.pub_date}}</p>
+    <p>{{memo.body}}</p>
+
+    <form action="{% url 'edit' memo.id%}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="메모수정">
+    </form>
+
+    <form action="{% url 'delete' memo.id%}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="메모삭제">
+    </form>
+
+    <a href="{% url 'home' %}">돌아가기</a>
+</div>
+{% endblock %}
